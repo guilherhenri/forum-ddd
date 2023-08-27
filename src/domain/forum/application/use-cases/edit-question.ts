@@ -9,6 +9,7 @@ interface EditQuestionUseCaseRequest {
   questionId: string
   title: string
   content: string
+  attachmentsIds: string[]
 }
 
 type EditQuestionUseCaseResponse = Either<
@@ -26,6 +27,7 @@ export class EditQuestionUseCase {
     authorId,
     title,
     content,
+    attachmentsIds,
   }: EditQuestionUseCaseRequest): Promise<EditQuestionUseCaseResponse> {
     const question = await this.questionsRepository.findById(questionId)
 
